@@ -6,13 +6,11 @@ const rateLimit = require('express-rate-limit');
 const path = require('path');
 const morgan = require('morgan');
 const routes = require('./routes/index');
-const { handleErrors } = require('./middlewares/errorMiddleware');
 const http = require('http');
 const socketIo = require('socket.io');
-const staffController = require('./controllers/staffController');
 const sharedSession = require('express-socket.io-session');
 const cookieParser = require('cookie-parser');
-const visitorRoutes = require('./routes/visitorRoutes');
+
 
 // Initialize Express app
 const app = express();
@@ -107,19 +105,17 @@ app.use(morgan('combined'));
 
 // Apply routes (Visitor routes, etc.)
 
-app.use('/visitor', visitorRoutes);
+
 app.use(routes);
 
-const adminRoutes = require('./routes/adminRoutes');
-app.use('/admin', adminRoutes);
+
 
 // 404 Page not found middleware
 app.use((req, res) => {
     res.status(404).render('404'); // Ensure you have a 404.ejs file
 });
 
-// Global error handling middleware
-app.use(handleErrors);
+
 
 // Start the server
 server.listen(PORT, () => {

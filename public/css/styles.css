@@ -1,0 +1,540 @@
+/* Import Bento Grid */
+@import url('https://cdn.jsdelivr.net/npm/bento-grid/css/bento.min.css');
+
+/* Reset default margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-left {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Make the "Azania" logo clickable */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none; /* Remove underline */
+    background: none; /* Remove any background */
+    border: none; /* Remove any border */
+    padding: 0; /* Remove padding */
+}
+
+.logo:hover {
+    color: #666; /* Change color on hover */
+}
+
+/* Rest of the styling for navbar and buttons remains the same */
+
+.navbar-right .get-app-btn,
+.navbar-right .sign-in-btn {
+    margin-left: 5px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: #e6e6e6;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* For anchor tags */
+}
+
+/* Add styling for "Get the App" button */
+.sign-in-btn, .get-app-btn {
+    margin-left: 10px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.sign-in-btn:hover, .get-app-btn:hover {
+    background-color: #45a049;
+}
+
+/* Align the buttons and links in the navbar */
+.navbar-right ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    align-items: center;
+}
+
+.navbar-right ul li {
+    display: inline-block;
+}
+
+.navbar-right ul li a {
+    display: inline-block;  /* Make sure links are inline elements */
+    color: #333;
+    font-size: 16px;
+    text-decoration: none;  /* No underline */
+    padding: 10px 5px;  /* Same padding as the button */
+    background: none;  /* Remove any background color */
+    border: none;  /* Remove any border */
+    transition: color 0.3s ease;
+    line-height: 1;  /* Adjust line height to vertically align */
+}
+
+.navbar-right ul li a:hover {
+    color: #666; /* Change color on hover */
+}
+
+/* Logout Button */
+.logout-btn {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: #e6e6e6;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    line-height: 1;  /* Match the line height of the links */
+}
+
+.logout-btn:hover {
+    background-color: #cccccc;
+}
+
+.main-content {
+    flex: 1; /* This ensures the main content fills the height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center the content vertically */
+}
+
+.retrieval-content {
+    flex: 1; /* This ensures the main content fills the height */
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start; /* Center the content vertically */
+    padding: 20px;
+}
+
+.dashboard-container {
+    display: grid;
+    gap: 20px;
+    padding: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust number of columns based on screen size */
+    grid-template-rows: 1fr; /* Ensures rows expand to fill available space */
+    height: calc(100vh - 100px); /* Adjust height to fill screen minus navbar and footer */
+    grid-auto-rows: 1fr; /* Makes sure rows take up equal space */
+}
+
+/* Widget Styles */
+.large-widget, .medium-widget, .small-widget, .user-widget {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* Align the content to the left */
+    color: white;
+    border-radius: 20px;
+    text-decoration: none;
+    background: linear-gradient(135deg, #f96e5b, #f55c5a); /* Use same color for all widgets */
+    transition: transform 0.2s, box-shadow 0.2s;
+    padding: 20px;
+}
+
+.large-widget {
+    grid-column: span 1; /* Occupies two columns */
+    grid-row: span 1; /* Occupies two rows */
+}
+
+.medium-widget, .small-widget, .user-widget {
+    grid-column: span 2; /* Occupies one column */
+    grid-row: span 1;
+}
+
+/* Profile Widget */
+
+
+
+/* Hover Effects */
+.large-widget:hover, .medium-widget:hover, .small-widget:hover, .user-widget:hover, .admin-widget:hover, .staff-widget:hover {
+    transform: scale(1.01); /* Slightly increase size on hover */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Text Styles */
+.large-widget h2, .medium-widget h3, .small-widget h3 {
+    margin-bottom: 10px;
+    font-size: inherit; /* Inherit font size from parent */
+}
+
+.large-widget h2 {
+    font-size: 2em;
+}
+
+.medium-widget h3, .small-widget h3 {
+    font-size: 1.5em;
+}
+
+.medium-widget p, .small-widget p {
+    font-size: 1em;
+}
+
+/* Bottom Row */
+.bottom-row {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Use Bento Grid for bottom row */
+}
+
+/* Footer */
+
+.footer {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 10px 0;
+    background-color: white;
+    font-size: 14px;
+    width: 100%;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.footer span {
+    cursor: pointer;
+    color: #333;
+}
+
+.footer span:hover {
+    text-decoration: underline;
+}
+
+/* Form Styles */
+.form-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: auto;
+}
+
+.form-toggle {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f96e5b;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+a {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f96e5b;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #f55c5a;
+}
+
+.form {
+    display: none; /* Hide all forms by default */
+}
+
+.form.active {
+    display: block; /* Show active form */
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Toggle active button */
+button.active {
+    background-color: #f55c5a;
+}
+
+
+.profile-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+/* Profile Picture Section */
+.profile-pic-section {
+    margin-bottom: 20px;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.profile-picture-container {
+    width: 90px; /* Set the container width */
+    height: 90px; /* Set the container height */
+    overflow: hidden; /* Hide overflow if the image exceeds container size */
+    border-radius: 50%; /* Make the container round */
+}
+
+.profile-picture-container img {
+    width: 100%; /* Make the image take up the full container width */
+    height: 100%; /* Ensure the image fills the height */
+    object-fit: cover; /* Ensure the image covers the container */
+}
+
+
+/* Upload Button */
+input[type="file"] {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+/* Profile Details Section */
+.profile-details p {
+    font-size: 1.1em;
+    margin: 10px 0;
+}
+
+strong {
+    font-weight: bold;
+}
+
+/* Container for the feedback survey */
+/* Feedback Container */
+.feedback-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 50px auto;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Survey Header */
+.feedback-container h2 {
+    font-size: 2.2em;
+    margin-bottom: 25px;
+    color: #333;
+    text-align: center;
+}
+
+/* Instructions */
+.feedback-container p {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    color: #666;
+    text-align: center;
+}
+
+/* Layout - using grid to organize form questions */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Full-width block elements (spanning both columns) */
+.form-grid .full-width {
+    grid-column: span 2;
+}
+
+/* Form labels */
+.feedback-container label {
+    font-size: 1.1em;
+    color: #333;
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+/* Form inputs (selects, textareas, etc.) */
+.feedback-container select,
+.feedback-container textarea,
+.feedback-container input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 1em;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+}
+
+/* Input and Select focus state */
+.feedback-container select:focus,
+.feedback-container textarea:focus,
+.feedback-container input:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Textarea specific styling */
+.feedback-container textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Submit button */
+.feedback-container button[type="submit"] {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+}
+
+/* Button hover effect */
+.feedback-container button[type="submit"]:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+
+/* Mobile-friendly adjustments */
+@media screen and (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr; /* Stack elements vertically on smaller screens */
+    }
+
+    .feedback-container {
+        padding: 20px;
+    }
+}
+.form-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
+}
+
+.form-toggle {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button.active {
+    background-color: #387C3B;
+}
+
+.form {
+    display: none;
+}
+
+.form.active {
+    display: block;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    background-color: #fff;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.footer span {
+    cursor: pointer;
+    color: #333;
+}
+
+.footer span:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .form-container {
+        width: 100%;
+        padding: 20px;
+    }
+}

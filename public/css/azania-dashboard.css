@@ -1,0 +1,244 @@
+/* Import Bento Grid */
+@import url('https://cdn.jsdelivr.net/npm/bento-grid/css/bento.min.css');
+
+/* Reset default margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-left {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.logo:hover {
+    color: #666;
+}
+
+/* Navbar Buttons */
+.navbar-right .get-app-btn,
+.navbar-right .sign-in-btn {
+    margin-left: 5px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: #e6e6e6;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.sign-in-btn, .get-app-btn {
+    margin-left: 10px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.sign-in-btn:hover, .get-app-btn:hover {
+    background-color: #45a049;
+}
+
+.navbar-right ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    align-items: center;
+}
+
+.navbar-right ul li {
+    display: inline-block;
+}
+
+.navbar-right ul li a {
+    display: inline-block;
+    color: #333;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 10px 5px;
+    background: none;
+    border: none;
+    transition: color 0.3s ease;
+}
+
+.navbar-right ul li a:hover {
+    color: #666;
+}
+
+/* Logout Button */
+.logout-btn {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: #e6e6e6;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #cccccc;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Dashboard Layout */
+.dashboard-container {
+    display: grid;
+    gap: 20px;
+    padding: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-rows: 1fr;
+    height: calc(100vh - 100px);
+    grid-auto-rows: 1fr;
+}
+
+/* Widget Styles */
+.large-widget, .medium-widget, .small-widget, .user-widget {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    color: white;
+    border-radius: 20px;
+    text-decoration: none;
+    background: linear-gradient(135deg, #ff4e37, #c20704);
+    transition: transform 0.2s, box-shadow 0.2s;
+    padding: 20px;
+}
+
+.large-widget {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+.medium-widget, .small-widget, .user-widget {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
+.large-widget:hover, .medium-widget:hover, .small-widget:hover, .user-widget:hover {
+    transform: scale(1.01);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Widget Text Styles */
+.large-widget h2, .medium-widget h3, .small-widget h3 {
+    margin-bottom: 10px;
+    font-size: inherit;
+}
+
+.large-widget h2 {
+    font-size: 2em;
+}
+
+.medium-widget h3, .small-widget h3 {
+    font-size: 1.5em;
+}
+
+.medium-widget p, .small-widget p {
+    font-size: 1em;
+}
+
+/* Profile Picture Section */
+.profile-pic-section {
+    margin-bottom: 20px;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.profile-picture-container {
+    width: 90px; /* Set the container width */
+    height: 90px; /* Set the container height */
+    overflow: hidden; /* Hide overflow if the image exceeds container size */
+    border-radius: 50%; /* Make the container round */
+}
+
+.profile-picture-container img {
+    width: 100%; /* Make the image take up the full container width */
+    height: 100%; /* Ensure the image fills the height */
+    object-fit: cover; /* Ensure the image covers the container */
+}
+
+/* Bottom Row Layout */
+.bottom-row {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 10px 0;
+    background-color: white;
+    font-size: 14px;
+    width: 100%;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.footer span {
+    cursor: pointer;
+    color: #333;
+}
+
+.footer span:hover {
+    text-decoration: underline;
+}

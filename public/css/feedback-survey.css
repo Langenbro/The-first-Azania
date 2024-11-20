@@ -1,0 +1,195 @@
+/* Reset default margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.navbar-left {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+}
+
+.navbar-right ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    align-items: center;
+}
+
+.navbar-right ul li {
+    display: inline-block;
+}
+
+.navbar-right ul li a {
+    display: inline-block;
+    color: #333;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 10px 5px;
+}
+
+.logout-btn {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: #ff4e37;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background-color: #c20704;
+}
+
+/* Main Content */
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Feedback Container */
+.feedback-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 50px auto;
+    font-family: 'Arial', sans-serif;
+}
+
+h2 {
+    font-size: 2.2em;
+    margin-bottom: 25px;
+    color: #333;
+    text-align: center;
+}
+
+p {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    color: #666;
+    text-align: center;
+}
+
+/* Layout - using grid to organize form questions */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Full-width block elements (spanning both columns) */
+.form-grid .full-width {
+    grid-column: span 2;
+}
+
+/* Form labels */
+.feedback-container label {
+    font-size: 1.1em;
+    color: #333;
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+/* Form inputs (selects, textareas, etc.) */
+.feedback-container select,
+.feedback-container textarea,
+.feedback-container input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 1em;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+}
+
+/* Input and Select focus state */
+.feedback-container select:focus,
+.feedback-container textarea:focus,
+.feedback-container input:focus {
+    border-color: #ff4e37;
+    outline: none;
+}
+
+/* Textarea specific styling */
+.feedback-container textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Submit button */
+.feedback-container button[type="submit"] {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff4e37;
+    color: white;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+}
+
+/* Button hover effect */
+.feedback-container button[type="submit"]:hover {
+    background-color: #c20704;
+    transform: translateY(-2px);
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 10px 0;
+    background-color: white;
+    font-size: 14px;
+    width: 100%;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.footer span {
+    cursor: pointer;
+    color: #333;
+}
+
+.footer span:hover {
+    text-decoration: underline;
+}
