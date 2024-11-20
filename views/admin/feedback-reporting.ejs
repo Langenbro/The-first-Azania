@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Reporting</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Feedback Reporting</h2>
+        <p>Below is the feedback submitted by users:</p>
+
+        <table border="1" cellpadding="10" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Answers</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% feedbackData.forEach(function(feedback) { %>
+                    <tr>
+                        <td><%= feedback.user_id %></td>
+                        <td><%= feedback.first_name %></td>
+                        <td><%= feedback.last_name %></td>
+                        <td><%= feedback.email %></td>
+                        <td><%= feedback.answers %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+
+        <a href="/admin/download-feedback-report" class="btn">Download Feedback Report</a>
+    </div>
+</body>
+</html>

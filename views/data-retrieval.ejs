@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Retrieval</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+        <!-- Navbar -->
+        <header>
+            <nav class="navbar">
+                <div class="navbar-left">
+                    <!-- Make the "Azania" logo clickable -->
+                    <a href="/" class="logo">Azania</a>
+                </div>
+                <div class="navbar-right">
+                    <ul>
+                        <li><a href="/get-app" class="get-app-btn">Get the App</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+<div class="retrieval-content">
+    <h1>Data Retrieval</h1>
+
+    <!-- Form to upload a new document -->
+    <form action="/staff/upload-document" method="POST" enctype="multipart/form-data">
+        <label for="document">Upload Document:</label>
+        <input type="file" name="document" id="document" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    <!-- Section to display uploaded documents -->
+    <h2>Uploaded Documents</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Document Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% documents.forEach(function(doc) { %>
+                <tr>
+                    <td><%= doc.filename %></td>
+                    <td>
+                        <a href="/staff/download-document/<%= doc.id %>">Download</a> | 
+                        <form action="/staff/delete-document/<%= doc.id %>" method="POST" style="display:inline;">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</div>
+    <%- include('partials/footer') %>
+</body>
+</html>

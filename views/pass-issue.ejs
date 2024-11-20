@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitor Pass Issued</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Your Visitor Pass</h1>
+        <p><strong>Passcode:</strong> <%= passcode %></p>
+        <p><strong>Event:</strong> <%= appointment.event_summary %></p>
+        <p><strong>Start Time:</strong> <%= appointment.start_time %></p>
+        <div class="qr-code">
+            <img src="<%= qrCodeUrl %>" alt="QR Code for Visitor Pass">
+        </div>
+        <p>Show this pass at the entrance.</p>
+        <a href="/" class="btn">Return to Dashboard</a>
+    </div>
+</body>
+</html>

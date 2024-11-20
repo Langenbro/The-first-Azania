@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="/css/user-profile.css">
+</head>
+<body>
+    <!-- Include Header -->
+    <%- include('partials/header') %>
+
+    <div class="profile-container">
+        <h1>User Profile</h1>
+
+        <!-- Profile Picture Section -->
+        <div class="profile-pic-section">
+            <img src="<%= user.profile_picture ? '/uploads/' + user.profile_picture : '/images/default-profile.png' %>" alt="Profile Picture" class="profile-pic">
+            <form action="/user/upload-profile-picture" method="POST" enctype="multipart/form-data">
+                <label for="profilePic">Upload Profile Picture:</label>
+                <input type="file" name="profilePic" id="profilePic" accept="image/*">
+                <button type="submit">Upload</button>
+            </form>
+        </div>
+
+        <!-- User Details Section -->
+        <div class="profile-details">
+            <p><strong>First Name:</strong> <%= user.first_name %></p>
+            <p><strong>Last Name:</strong> <%= user.last_name %></p>
+            <p><strong>Email:</strong> <%= user.email %></p>
+            <p><strong>Phone Number:</strong> <%= user.phone_number %></p>
+            <p><strong>Role:</strong> <%= user.role %></p>
+        </div>
+
+        <!-- Logout Button -->
+        <form action="/logout" method="POST">
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+    </div>
+
+    <!-- Include Footer -->
+    <%- include('partials/footer') %>
+</body>
+</html>

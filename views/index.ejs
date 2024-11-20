@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azania Dashboard</title>
+    <link rel="stylesheet" href="/css/azania-dashboard.css">
+
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <a href="/" class="logo">Azania</a>
+        </div>
+        <div class="navbar-right">
+            <ul>
+                <% if (!user) { %>
+                    <li><a href="/get-app" class="get-app-btn">Get the App</a></li>
+                    <li><a href="/login-register" class="sign-in-btn">Sign in</a></li>
+                <% } else { %>
+                    <li><a href="/user/profile">Profile</a></li>
+                    <% if (user.role === 'admin') { %>
+                        <li><a href="/admin/user-management">User Management</a></li>
+                        <li><a href="/admin/system-settings">System Settings</a></li>
+                        <li><a href="/admin/reports">Reports</a></li>
+                    <% } else if (user.role === 'staff') { %>
+                        <li><a href="/staff/schedule-appointment">Schedule Appointment</a></li>
+                        <li><a href="/staff/time-sheets">Time Sheets</a></li>
+                    <% } else if (user.role === 'visitor') { %>
+                        <li><a href="/visitor/dashboard">Visitor Dashboard</a></li>
+                    <% } %>
+                    <li>
+                        <form action="/logout" method="POST" style="display:inline;">
+                            <button type="submit" class="logout-btn">Logout</button>
+                        </form>
+                    </li>
+                <% } %>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="dashboard-container">
+
+            <!-- Access Azania Widget -->
+            <a href="<%= user ? 'http://localhost:5001' : 'login-register' %>" class="large-widget">
+                <div class="widget-content">
+                    <h2>Access Azania</h2>
+                    <p>
+                        Access Azania is your AI assistant designed to help you navigate the company’s services and tasks.
+                        <% if (user && user.role === 'admin') { %>
+                            Get real-time insights into system performance, manage tasks, and escalate unresolved issues.
+                        <% } else if (user && user.role === 'staff') { %>
+                            Manage tasks, appointments, and communications with visitors and colleagues.
+                        <% } else if (user && user.role === 'visitor') { %>
+                            Get help with scheduling appointments, navigating the premises, and accessing necessary information.
+                        <% } else { %>
+                            Whether you need to manage appointments, ask questions, or check visitor logs, Azania is here to assist.
+                        <% } %>
+                    </p>
+                </div>
+            </a>
+
+
+
+
+            <!-- Additional Widgets based on User Role -->
+            <% if (!user) { %>
+                <!-- Visitor Widgets Before Login -->
+                <div class="bottom-row">
+                    <a href="<%= user ? '/visitor/schedule-appointment' : '/login-register' %>" class="medium-widget">
+                        <div class="widget-content">
+                            <h3>Appointment Scheduling</h3>
+                            <p>Schedule and manage your appointments with staff members.</p>
+                        </div>
+                    </a>
+                
+                    <!-- Visitor Pass Issuance Widget -->
+                    <a href="<%= user ? '/visitor/visitor-pass' : '/login-register' %>" class="medium-widget">
+                        <div class="widget-content">
+                            <h3>Visitor Pass Issuance</h3>
+                            <p>Get your visitor pass and view access permissions for your visit.</p>
+                        </div>
+                    </a>
+                
+                    <!-- Query Management Widget -->
+                    <a href="<%= user ? '/visitor/query-management' : '/login-register' %>" class="medium-widget">
+                        <div class="widget-content">
+                            <h3>Query Management</h3>
+                            <p>Ask questions and get help about your visit or company services.</p>
+                        </div>
+                    </a>
+                
+                    <!-- Call Routing Widget -->
+                    <a href="<%= user ? '/visitor/call-routing' : '/login-register' %>" class="medium-widget">
+                        <div class="widget-content">
+                            <h3>Call Routing</h3>
+                            <p>Manage and route your calls to the appropriate department.</p>
+                        </div>
+                    </a>
+                
+                    <!-- Feedback System Widget -->
+                    <a href="<%= user ? '/visitor/feedback' : '/login-register' %>" class="medium-widget">
+                        <div class="widget-content">
+                            <h3>Feedback System</h3>
+                            <p>Provide feedback about your experience and request support if needed.</p>
+                        </div>
+                    </a>
+                
+                    <!-- Company Website Widget -->
+                    <a href="<%= user ? '/visitor/company-website' : '/login-register' %>" class="medium-widget">
+                        <div class="widget-content">
+                            <h3>Company Website</h3>
+                            <p>Access the company's website and learn more about our services.</p>
+                        </div>
+                    </a>
+                    
+                </div>
+            <% } else if (user.role === 'admin') { %>
+                <!-- Admin Widgets -->
+                <div class="bottom-row">
+                <!-- User Management Widget -->
+                <a href="/admin/user-management" class="medium-widget">
+                    <div class="widget-content">
+                        <h3>User Management</h3>
+                        <p>Manage system users, including staff, visitors, and admins. Add, edit, or remove users.</p>
+                    </div>
+                </a>
+
+                <!-- System Settings Widget -->
+                <a href="/admin/system-settings" class="medium-widget">
+                    <div class="widget-content">
+                        <h3>System Settings</h3>
+                        <p>Configure system-wide settings, security protocols, and default configurations.</p>
+                    </div>
+                </a>
+
+                <!-- Reports & Analytics Widget -->
+                <a href="/admin/reports-analytics" class="medium-widget">
+                    <div class="widget-content">
+                        <h3>Reports & Analytics</h3>
+                        <p>Generate and view system performance reports, user activity, and visitor logs.</p>
+                    </div>
+                </a>
+
+                <!-- Appointment Management Widget -->
+                <a href="/admin/appointment-management" class="medium-widget">
+                    <div class="widget-content">
+                        <h3>Appointment Management</h3>
+                        <p>Schedule, view, and manage appointments for both staff and visitors.</p>
+                    </div>
+                </a>
+                            <!-- Profile Widget for Logged-in Users -->
+            <% if (user) { %>
+                <a href="/user/profile" class="medium-widget">
+                    <div class="widget-content">
+                        <div class="profile-picture-container">
+                            <img src="/images/placeholder-profile.png" alt="Profile Placeholder">
+                        </div>                        
+                        <h3><%= user.first_name %> <%= user.last_name %></h3>
+                        <p>Role: <%= user.role.charAt(0).toUpperCase() + user.role.slice(1) %></p>
+                    </div>
+                </a>
+            <% } %>
+
+                <!-- Visitor Pass Issuance Widget -->
+                <a href="/admin/visitor-pass-issuance" class="medium-widget">
+                    <div class="widget-content">
+                        <h3>Visitor Pass Issuance</h3>
+                        <p>Issue and manage visitor passes, including access permissions and status tracking.</p>
+                    </div>
+                </a>
+
+                <!-- Security Integration Widget -->
+                <a href="/admin/security-integration" class="medium-widget">
+                    <div class="widget-content">
+                        <h3>Security Integration</h3>
+                        <p>Monitor and control access to critical areas, manage user access levels, and review security logs.</p>
+                    </div>
+                </a>
+
+                <!-- Task Manager Widget -->
+                <a href="/admin/task-manager" class="medium-widget">
+                    <div class="widget-content">
+                        <h3>Task Manager</h3>
+                        <p>Oversee and manage tasks, assign tasks to staff, and intervene when necessary.</p>
+                    </div>
+                </a>
+
+                <!-- Escalation System Widget -->
+                <a href="/admin/escalation-system" class="medium-widget">
+                    <div class="widget-content">
+                        <h3>Escalation System</h3>
+                        <p>Manage and handle unresolved tasks by escalating them to responsible staff members.</p>
+                    </div>
+                </a>
+
+                <!-- Feedback Reporting Widget -->
+                <a href="/admin/feedback-reporting" class="medium-widget">
+                    <div class="widget-content">
+                        <h3>Feedback Reporting</h3>
+                        <p>View and analyze feedback submitted by users to improve the system and services.</p>
+                    </div>
+                </a>
+
+                <!-- Notification System Widget -->
+                <a href="/admin/notification-system" class="medium-widget">
+                    <div class="widget-content">
+                        <h3>Notification System</h3>
+                        <p>Manage notifications sent to users, including appointment reminders and task updates.</p>
+                    </div>
+                </a>
+
+                <!-- Call Routing Widget -->
+                <a href="/admin/call-routing" class="medium-widget">
+                    <div class="widget-content">
+                        <h3>Call Routing</h3>
+                        <p>Monitor and manage call routing, ensuring calls are directed to the correct departments.</p>
+                    </div>
+                </a>
+
+                </div>
+            <% } else if (user.role === 'staff') { %>
+                <!-- Staff Widgets -->
+                <div class="bottom-row">
+                <!-- Schedule Appointment Widget -->
+                <a href="/staff/schedule-appointment" class="medium-widget">
+                    <div class="widget-content">
+                        <h3>Schedule Appointment</h3>
+                        <p>Schedule and manage appointments with visitors or other staff members.</p>
+                    </div>
+                </a>
+
+                <!-- Visitor Pass Issuance Widget -->
+                <a href="/staff/visitor-pass-issuance" class="medium-widget">
+                    <div class="widget-content">
+                        <h3>Visitor Pass Issuance</h3>
+                        <p>Issue passes for visitors and manage their access permissions during visits.</p>
+                    </div>
+                </a>
+                
+
+                <!-- Visitor Logging Widget -->
+                <a href="/staff/visitor-logging" class="medium-widget">
+                    <div class="widget-content">
+                        <h3>Visitor Logging</h3>
+                        <p>Keep track of all visitor logs, including check-in and check-out times.</p>
+                    </div>
+                </a>
+
+                <!-- Peer Communication Widget -->
+                <a href="/staff/peer-communication" class="medium-widget">
+                    <div class="widget-content">
+                        <h3>Peer Communication</h3>
+                        <p>Communicate with other staff members for task coordination and collaboration.</p>
+                    </div>
+                </a>
+                            <!-- Profile Widget for Logged-in Users -->
+            <% if (user) { %>
+                <a href="/user/profile" class="medium-widget">
+                    <div class="widget-content">
+                        <div class="profile-picture-container">
+                            <img src="/images/placeholder-profile.png" alt="Profile Placeholder">
+                        </div>                        
+                        <h3><%= user.first_name %> <%= user.last_name %></h3>
+                        <p>Role: <%= user.role.charAt(0).toUpperCase() + user.role.slice(1) %></p>
+                    </div>
+                </a>
+            <% } %>
+
+                <!-- Call Routing Widget -->
+                <a href="/staff/call-routing" class="medium-widget">
+                    <div class="widget-content">
+                        <h3>Call Routing</h3>
+                        <p>Manage and route incoming calls to the correct staff or department based on availability.</p>
+                    </div>
+                </a>
+
+                <!-- Task Manager Widget -->
+                <a href="/staff/task-manager" class="medium-widget">
+                    <div class="widget-content">
+                        <h3>Task Manager</h3>
+                        <p>View and manage your assigned tasks, collaborate with peers, and track deadlines.</p>
+                    </div>
+                </a>
+
+                <!-- Data Retrieval Widget -->
+                <a href="/staff/data-retrieval" class="medium-widget">
+                    <div class="widget-content">
+                        <h3>Data Retrieval</h3>
+                        <p>Upload, manage, and retrieve documents from the system.</p>
+                    </div>
+                </a>
+
+                </div>
+            <% } else if (user.role === 'visitor') { %>
+                <!-- Visitor Widgets -->
+                <div class="bottom-row">
+                <!-- Schedule Appointment Widget -->
+                <a href="http://localhost:5000" class="medium-widget">
+                    <div class="widget-content">
+                        <h3>Schedule Appointment</h3>
+                        <p>Schedule appointments with staff and manage your upcoming visits.</p>
+                    </div>
+                </a>
+                
+
+            <!-- Visitor Dashboard Button for Requesting Pass -->
+            <a href="/visitor/request-pass-page" class="medium-widget">
+                <div class="widget-content">
+                    <h3>Request Visitor Pass</h3>
+                    <p>Click to request your visitor pass.</p>
+                </div>
+            </a>
+
+
+                            <!-- Profile Widget for Logged-in Users -->
+            <% if (user) { %>
+                <a href="/user/profile" class="medium-widget">
+                    <div class="widget-content">
+                        <div class="profile-picture-container">
+                            <img src="/images/placeholder-profile.png" alt="Profile Placeholder">
+                        </div>                        
+                        <h3><%= user.first_name %> <%= user.last_name %></h3>
+                        <p>Role: <%= user.role.charAt(0).toUpperCase() + user.role.slice(1) %></p>
+                    </div>
+                </a>
+            <% } %>
+
+                <!-- Query Management Widget -->
+                <a href="http://localhost:5002" class="medium-widget">
+                    <div class="widget-content">
+                        <h3>Query Management</h3>
+                        <p>Ask questions about your visit or request information from the staff.</p>
+                    </div>
+                </a>
+
+                <!-- Feedback System Widget -->
+                <a href="/visitor/feedback-system" class="medium-widget">
+                    <div class="widget-content">
+                        <h3>Feedback System</h3>
+                        <p>Submit feedback about your experience after your visit or appointment.</p>
+                    </div>
+                </a>                
+
+                <!-- Company Website Widget -->
+                <a href="https://www.qcto.org.za/" class="medium-widget">
+                    <div class="widget-content">
+                        <h3>Company Website</h3>
+                        <p>Access important company resources and information.</p>
+                    </div>
+                </a>
+
+                </div>
+            <% } %>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <span>&copy; Azania. All Rights Reserved.</span>
+        <span>Privacy</span>
+        <span>Terms</span>
+        <span>FAQs</span>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+    <!-- Include the header partial -->
+    <%- include('partials/header') %>
+
+    <div class="dashboard-container">
+        <!-- Profile Widget -->
+        <a href="/user/profile" class="medium-widget user-widget">
+            <img src="/images/profile-placeholder.png" alt="Profile Picture" class="profile-pic">
+            <h3><%= user.first_name %> <%= user.last_name %></h3>
+            <p>Role: <%= user.role.charAt(0).toUpperCase() + user.role.slice(1) %></p>
+        </a>
+
+        <!-- Admin Dashboard Widgets -->
+        <a href="/admin/user-management" class="medium-widget admin-widget">
+            <h3>User Management</h3>
+            <p>Manage users in the system</p>
+        </a>
+        <a href="/admin/reports" class="medium-widget admin-widget">
+            <h3>Reports</h3>
+            <p>View and generate reports</p>
+        </a>
+        <a href="/admin/system-settings" class="medium-widget admin-widget">
+            <h3>System Settings</h3>
+            <p>Adjust system-wide settings</p>
+        </a>
+    </div>
+    <%- include('partials/footer') %>
+
+</body>
+</html>

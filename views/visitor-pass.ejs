@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitor Pass Verification</title>
+    <link rel="stylesheet" href="/css/visitor-pass.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="navbar-left">
+                <a href="/" class="logo">Azania</a>
+            </div>
+            <div class="navbar-right">
+                <ul>
+                    <li><a href="/profile">Profile</a></li>
+                    <li><a href="/visitor/dashboard">Visitor Dashboard</a></li>
+                    <li>
+                        <form action="/logout" method="POST" style="display:inline;">
+                            <button type="submit" class="logout-btn">Logout</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container">
+            <h1>Visitor Pass for <%= visitor.name %></h1>
+            <p><strong>Event:</strong> <%= visitor.event %></p>
+            <p><strong>Staff Member:</strong> <%= visitor.staff %></p>
+            <p><strong>Start Time:</strong> <%= visitor.startTime %></p>
+            <p><strong>Passcode:</strong> <%= visitor.passcode %></p>
+            <div class="qr-code">
+                <img src="<%= visitor.qrCode %>" alt="QR Code for Visitor Pass">
+            </div>
+            <p>Please show this QR code at the entrance.</p>
+            <a href="/" class="btn">Return to Dashboard</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <span>&copy; Azania. All Rights Reserved.</span>
+        <span>Privacy</span>
+        <span>Terms</span>
+        <span>FAQs</span>
+    </footer>
+
+</body>
+</html>

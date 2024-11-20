@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Survey</title>
+    <link rel="stylesheet" href="/css/feedback-survey.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="navbar-left">
+                <a href="/" class="logo">Azania</a>
+            </div>
+            <div class="navbar-right">
+                <ul>
+                    <li><a href="/profile">Profile</a></li>
+                    <li><a href="/visitor/dashboard">Visitor Dashboard</a></li>
+                    <li>
+                        <form action="/logout" method="POST" style="display:inline;">
+                            <button type="submit" class="logout-btn">Logout</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="feedback-container">
+            <h2>Feedback Survey</h2>
+            <p>Please provide your feedback regarding your experience.</p>
+    
+            <form action="/visitor/submit-feedback" method="POST" class="form-grid">
+            
+                <!-- User Management -->
+                <div>
+                    <label>1. How easy was it to register or log in to the system?</label>
+                    <select name="answers[]" required>
+                        <option value="Very Easy">Very Easy</option>
+                        <option value="Easy">Easy</option>
+                        <option value="Neutral">Neutral</option>
+                        <option value="Difficult">Difficult</option>
+                    </select>
+                </div>
+            
+                <div>
+                    <label>2. Did you encounter any issues with account authentication or password recovery?</label>
+                    <select name="answers[]" required>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            
+                <div>
+                    <label>If yes, please describe the issue:</label>
+                    <textarea name="answers[]" rows="4"></textarea>
+                </div>
+            
+                <!-- NLP Engine -->
+                <div>
+                    <label>3. Did the system correctly interpret your spoken or typed commands?</label>
+                    <select name="answers[]" required>
+                        <option value="Always">Always</option>
+                        <option value="Often">Often</option>
+                        <option value="Sometimes">Sometimes</option>
+                        <option value="Never">Never</option>
+                    </select>
+                </div>
+            
+                <div>
+                    <label>4. How satisfied are you with the system's ability to process your input?</label>
+                    <select name="answers[]" required>
+                        <option value="Very Satisfied">Very Satisfied</option>
+                        <option value="Satisfied">Satisfied</option>
+                        <option value="Neutral">Neutral</option>
+                        <option value="Unsatisfied">Unsatisfied</option>
+                    </select>
+                </div>
+            
+                <!-- Task Manager -->
+                <div>
+                    <label>5. Were your tasks (e.g., scheduling, routing calls) handled accurately by the system?</label>
+                    <select name="answers[]" required>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            
+                <div>
+                    <label>6. How would you rate the overall effectiveness of task execution?</label>
+                    <select name="answers[]" required>
+                        <option value="Very Effective">Very Effective</option>
+                        <option value="Effective">Effective</option>
+                        <option value="Neutral">Neutral</option>
+                        <option value="Ineffective">Ineffective</option>
+                    </select>
+                </div>
+            
+                <div>
+                    <label>If there was an error, how well did the system handle task escalation?</label>
+                    <select name="answers[]" required>
+                        <option value="Very Well">Very Well</option>
+                        <option value="Well">Well</option>
+                        <option value="Neutral">Neutral</option>
+                        <option value="Poorly">Poorly</option>
+                    </select>
+                </div>
+            
+                <!-- Security Integration -->
+                <div>
+                    <label>7. Did the system effectively manage access control for you or your visitors?</label>
+                    <select name="answers[]" required>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            
+                <div>
+                    <label>8. Were the security checks for accessing restricted areas smooth?</label>
+                    <select name="answers[]" required>
+                        <option value="Very Smooth">Very Smooth</option>
+                        <option value="Smooth">Smooth</option>
+                        <option value="Slightly Complicated">Slightly Complicated</option>
+                        <option value="Complicated">Complicated</option>
+                    </select>
+                </div>
+            
+                <!-- Appointment Management -->
+                <div>
+                    <label>9. How easy was it to schedule an appointment using the system?</label>
+                    <select name="answers[]" required>
+                        <option value="Very Easy">Very Easy</option>
+                        <option value="Easy">Easy</option>
+                        <option value="Neutral">Neutral</option>
+                        <option value="Difficult">Difficult</option>
+                    </select>
+                </div>
+            
+                <div>
+                    <label>10. Did you receive timely confirmations and reminders for your appointments?</label>
+                    <select name="answers[]" required>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            
+                <!-- Call Routing -->
+                <div>
+                    <label>11. Was your call routed to the correct department or staff member?</label>
+                    <select name="answers[]" required>
+                        <option value="Always">Always</option>
+                        <option value="Most of the time">Most of the time</option>
+                        <option value="Sometimes">Sometimes</option>
+                        <option value="Never">Never</option>
+                    </select>
+                </div>
+            
+                <div>
+                    <label>12. How effective was the call routing system?</label>
+                    <select name="answers[]" required>
+                        <option value="Very Effective">Very Effective</option>
+                        <option value="Effective">Effective</option>
+                        <option value="Neutral">Neutral</option>
+                        <option value="Ineffective">Ineffective</option>
+                    </select>
+                </div>
+            
+                <!-- Query Management -->
+                <div>
+                    <label>13. Were your queries answered accurately and promptly?</label>
+                    <select name="answers[]" required>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            
+                <div>
+                    <label>14. Did the system provide relevant data when you needed information?</label>
+                    <select name="answers[]" required>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            
+                <div>
+                    <label>15. How would you rate your experience with the query management system?</label>
+                    <select name="answers[]" required>
+                        <option value="Excellent">Excellent</option>
+                        <option value="Good">Good</option>
+                        <option value="Fair">Fair</option>
+                        <option value="Poor">Poor</option>
+                    </select>
+                </div>
+            
+                <!-- Access Management -->
+                <div>
+                    <label>16. Did the system correctly identify your permissions for accessing restricted areas or functions?</label>
+                    <select name="answers[]" required>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            
+                <div>
+                    <label>17. How easy was it to manage access permissions for visitors or staff?</label>
+                    <select name="answers[]" required>
+                        <option value="Very Easy">Very Easy</option>
+                        <option value="Easy">Easy</option>
+                        <option value="Neutral">Neutral</option>
+                        <option value="Difficult">Difficult</option>
+                    </select>
+                </div>
+            
+                <!-- Visitor Logging -->
+                <div>
+                    <label>18. How seamless was the process of logging visitor information into the system?</label>
+                    <select name="answers[]" required>
+                        <option value="Very Seamless">Very Seamless</option>
+                        <option value="Seamless">Seamless</option>
+                        <option value="Slightly Complicated">Slightly Complicated</option>
+                        <option value="Complicated">Complicated</option>
+                    </select>
+                </div>
+            
+                <div>
+                    <label>19. Were visitor records easy to retrieve when needed?</label>
+                    <select name="answers[]" required>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            
+                <!-- Peer Communication -->
+                <div>
+                    <label>20. Was the chat system helpful for communicating with staff members?</label>
+                    <select name="answers[]" required>
+                        <option value="Very Helpful">Very Helpful</option>
+                        <option value="Helpful">Helpful</option>
+                        <option value="Neutral">Neutral</option>
+                        <option value="Not Helpful">Not Helpful</option>
+                    </select>
+                </div>
+            
+                <div>
+                    <label>21. How frequently did you use the peer communication feature?</label>
+                    <select name="answers[]" required>
+                        <option value="Frequently">Frequently</option>
+                        <option value="Occasionally">Occasionally</option>
+                        <option value="Rarely">Rarely</option>
+                        <option value="Never">Never</option>
+                    </select>
+                </div>
+            
+                <!-- Data Fetching -->
+                <div>
+                    <label>22. Were you able to fetch relevant data (e.g., appointments, records) when needed?</label>
+                    <select name="answers[]" required>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            
+                <div>
+                    <label>23. How would you rate the system's ability to fetch accurate data?</label>
+                    <select name="answers[]" required>
+                        <option value="Excellent">Excellent</option>
+                        <option value="Good">Good</option>
+                        <option value="Fair">Fair</option>
+                        <option value="Poor">Poor</option>
+                    </select>
+                </div>
+            
+                <!-- Escalation System -->
+                <div>
+                    <label>24. Did the system escalate tasks when it could not resolve your request?</label>
+                    <select name="answers[]" required>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            
+                <div>
+                    <label>25. How satisfied were you with the escalation and resolution process?</label>
+                    <select name="answers[]" required>
+                        <option value="Very Satisfied">Very Satisfied</option>
+                        <option value="Satisfied">Satisfied</option>
+                        <option value="Neutral">Neutral</option>
+                        <option value="Unsatisfied">Unsatisfied</option>
+                    </select>
+                </div>
+            
+                <!-- Notification System -->
+                <div>
+                    <label>26. Were notifications (email/SMS/in-app) sent promptly for your tasks and appointments?</label>
+                    <select name="answers[]" required>
+                        <option value="Always">Always</option>
+                        <option value="Most of the time">Most of the time</option>
+                        <option value="Sometimes">Sometimes</option>
+                        <option value="Never">Never</option>
+                    </select>
+                </div>
+            
+                <div>
+                    <label>27. Did you find the notifications helpful in managing your tasks?</label>
+                    <select name="answers[]" required>
+                        <option value="Very Helpful">Very Helpful</option>
+                        <option value="Helpful">Helpful</option>
+                        <option value="Neutral">Neutral</option>
+                        <option value="Not Helpful">Not Helpful</option>
+                    </select>
+                </div>
+            
+                <!-- Visitor Pass Issuance -->
+                <div>
+                    <label>28. How easy was it to request a visitor pass through the system?</label>
+                    <select name="answers[]" required>
+                        <option value="Very Easy">Very Easy</option>
+                        <option value="Easy">Easy</option>
+                        <option value="Neutral">Neutral</option>
+                        <option value="Difficult">Difficult</option>
+                    </select>
+                </div>
+            
+                <div>
+                    <label>29. Was the pass issuance process smooth and timely?</label>
+                    <select name="answers[]" required>
+                        <option value="Very Smooth">Very Smooth</option>
+                        <option value="Smooth">Smooth</option>
+                        <option value="Slightly Complicated">Slightly Complicated</option>
+                        <option value="Complicated">Complicated</option>
+                    </select>
+                </div>
+            
+                <!-- Feedback System -->
+                <div>
+                    <label>30. How likely are you to provide feedback after using the system or completing tasks?</label>
+                    <select name="answers[]" required>
+                        <option value="Very Likely">Very Likely</option>
+                        <option value="Likely">Likely</option>
+                        <option value="Neutral">Neutral</option>
+                        <option value="Unlikely">Unlikely</option>
+                    </select>
+                </div>
+            
+                <div>
+                    <label>31. How satisfied are you with the feedback options and ease of submission?</label>
+                    <select name="answers[]" required>
+                        <option value="Very Satisfied">Very Satisfied</option>
+                        <option value="Satisfied">Satisfied</option>
+                        <option value="Neutral">Neutral</option>
+                        <option value="Unsatisfied">Unsatisfied</option>
+                    </select>
+                </div>
+            
+                <!-- Feedback Reporting -->
+                <div>
+                    <label>32. How well does the system compile and present feedback data for review?</label>
+                    <select name="answers[]" required>
+                        <option value="Very Well">Very Well</option>
+                        <option value="Well">Well</option>
+                        <option value="Neutral">Neutral</option>
+                        <option value="Poorly">Poorly</option>
+                    </select>
+                </div>
+            
+                <div>
+                    <label>33. Do you feel that your feedback leads to improvements or changes in the system?</label>
+                    <select name="answers[]" required>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            
+                <div class="full-width">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <span>&copy; Azania. All Rights Reserved.</span>
+        <span>Privacy</span>
+        <span>Terms</span>
+        <span>FAQs</span>
+    </footer>
+
+</body>
+</html>
